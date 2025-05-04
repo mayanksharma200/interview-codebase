@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const SECRET_KEY = process.env.JWT_SECRET;
-console.log("JWT_SECRET:", SECRET_KEY);
+// console.log("JWT_SECRET:", SECRET_KEY);
 
 if (!SECRET_KEY) {
   console.error(
