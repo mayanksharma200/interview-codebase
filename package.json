@@ -1,0 +1,24 @@
+{
+  "name": "interview-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "interview",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace backend\" \"npm run dev --workspace interview\"",
+    "start": "concurrently \"npm start --workspace backend\" \"npm run preview --workspace interview\"",
+    "build": "npm run build --workspace interview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^7.6.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.5"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^3.31.0",
+    "@tailwindcss/vite": "^4.1.5"
+  }
+}
