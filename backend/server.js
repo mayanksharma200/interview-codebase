@@ -2,12 +2,13 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import cors from "cors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
-// Load env  variables
+// Load env variables
 dotenv.config();
 
 const app = express();
-const SECRET_KEY = "process.env.JWT_SECRET";
+const SECRET_KEY = process.env.JWT_SECRET;
 console.log("JWT_SECRET:", SECRET_KEY);
 
 if (!SECRET_KEY) {
@@ -30,6 +31,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(cookieParser());
 
 // Login
 app.post("/login", (req, res) => {
@@ -40,7 +42,7 @@ app.post("/login", (req, res) => {
     // Set token as httpOnly cookie
     res.cookie("authToken", token, {
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production",
       maxAge: 3600000,
       sameSite: "lax",
     });
