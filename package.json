@@ -6,7 +6,7 @@
     "interview",
     "backend"
   ],
-  "scripts": {
+"scripts": {
     "dev": "concurrently \"npm run dev --workspace backend\" \"npm run dev --workspace interview\"",
     "start": "concurrently \"npm start --workspace backend\" \"npm run preview --workspace interview\"",
     "build": "npm run build --workspace interview"
