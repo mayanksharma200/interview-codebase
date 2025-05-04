@@ -17,9 +17,14 @@ if (!SECRET_KEY) {
   process.exit(1);
 }
 
+const allowedOrigins = [
+  "https://interview-codebase.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173", //coors
+    origin: allowedOrigins,
     credentials: true,
   })
 );
